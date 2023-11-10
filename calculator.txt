@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .cal-header {
+            font-size: 36px;
+            color: #007bff;
+        }
+
+        .input-field {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .btn {
+            font-size: 24px;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-size: 24px;
+            color: #28a745;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="cal-header">Calculator</div>
+        <div class="input-field">
+            Enter 1st number <input type="number" name="fnum" id="fnum" />
+        </div>
+        <div class="input-field">
+            Enter 2nd number <input type="number" name="snum" id="snum" />
+        </div>
+        <button class="btn" onclick="calculate('+')">Addition</button>
+        <button class="btn" onclick="calculate('-')">Subtraction</button>
+        <button class="btn" onclick="calculate('*')">Multiplication</button>
+        <button class="btn" onclick="calculate('/')">Division</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            var num1 = parseFloat(document.getElementById('fnum').value);
+            var num2 = parseFloat(document.getElementById('snum').value);
+            var result = document.getElementById('result');
+            var calculation;
+
+            switch (operator) {
+                case '+':
+                    calculation = num1 + num2;
+                    break;
+                case '-':
+                    calculation = num1 - num2;
+                    break;
+                case '*':
+                    calculation = num1 * num2;
+                    break;
+                case '/':
+                    calculation = num2 !== 0 ? num1 / num2 : "Infinity";
+                    break;
+            }
+
+            result.innerHTML = num1 + " " + operator + " " + num2 + " = " + calculation;
+        }
+    </script>
+</body>
+</html>
